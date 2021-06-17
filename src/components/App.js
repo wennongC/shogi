@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from './Board';
+import CaptureSection from './CaptureSection';
 
 import initialBoard from "../data/initialBoard";
 
@@ -27,18 +28,21 @@ export default class App extends React.Component {
         }
     }
 
-    move = (dest_row, dest_col) => {
+    move = (selected, dest_row, dest_col) => {
         let boardData = this.state.boardData;
 
-        if (this.state.selected) {
+        if (selected) {
             if (boardData[dest_row][dest_col] != null && 
                 boardData[dest_row][dest_col].player_side == this.state.selected.player_side)
                 return;
 
-            const {row_idx, col_idx} = this.state.selected_pos;
-            boardData[dest_row][dest_col] = boardData[row_idx][col_idx];
-            boardData[row_idx][col_idx] = null;
-            this.state.selected.unselect();
+            boardData[dest_row][dest_col] = selected;
+
+            if (this.state.selected_pos) {
+                const {row_idx, col_idx} = this.state.selected_pos;
+                boardData[row_idx][col_idx] = null;
+            }
+            selected.unselect();
             this.setState({
                 boardData: boardData,
                 selected: null,
@@ -48,14 +52,18 @@ export default class App extends React.Component {
     }
 
     render() {
+        operations = {
+            setSelected: this.setSelected,
+            getSelected: this.getSelected,
+            move: this.move
+        };
+
         return (
-            <Board data={this.state.boardData}
-                operations={{
-                    setSelected: this.setSelected,
-                    getSelected: this.getSelected,
-                    move: this.move
-                }}
-            />
+            <>
+            <CaptureSection operations />
+            <Board data={this.state.boardData} operations />
+            <CaptureSection operations />
+            </>
         );
     }
 }
