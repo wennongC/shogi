@@ -54,7 +54,6 @@ export default class App extends React.Component {
             // Put the new figure into the destination cell
             boardData[dest_row][dest_col] = this.state.selected;
 
-            console.log(this.state.selected_idx);
             if (this.state.selected_pos) {
                 const {row_idx, col_idx} = this.state.selected_pos;
                 boardData[row_idx][col_idx] = null;
