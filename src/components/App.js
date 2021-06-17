@@ -48,6 +48,7 @@ export default class App extends React.Component {
             if (boardData[dest_row][dest_col]) {
                 this.state.captures[this.state.selected.player_side].push(boardData[dest_row][dest_col]);
                 boardData[dest_row][dest_col].unselect();
+                boardData[dest_row][dest_col].flip(true);
                 boardData[dest_row][dest_col].switchSide();
             }
 

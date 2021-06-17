@@ -17,8 +17,12 @@ export default class FigureData {
         this.color = this.player_side == PLAYER_1 ? "#dfe6e9" : "#ffeaa7";
     }
 
-    flip() {
+    flip(toOrigin = false) {
         if (this.backside == null) return;
+        else if (toOrigin) {
+            this.currentName = this.name;
+            this.text_color = "black";
+        }
         else {
             if (this.currentName == this.name) {
                 this.currentName = this.backside;
@@ -36,9 +40,5 @@ export default class FigureData {
     switchSide() {
         this.player_side = this.player_side == PLAYER_1 ? PLAYER_2 : PLAYER_1;
         this.updateColor();
-    }
-
-    makeCopy() {
-        return new FigureData(this.name, this.backside, this.player_side);
     }
 }
