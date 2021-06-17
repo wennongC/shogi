@@ -32,6 +32,6 @@ export default class CellData {
     }
 
     makeCopy() {
-        return new CellData(this.name, this.player_side);
+        return new CellData(this.name, this.backside, this.player_side);
     }
 }
