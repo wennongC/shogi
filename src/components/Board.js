@@ -3,8 +3,8 @@ import Figure from './Figure';
 
 export default class Board extends React.Component {
 
-    onClickCell = (selected, row_idx, col_idx) => {
-        this.props.operations.move(selected, row_idx, col_idx);
+    onClickCell = (row_idx, col_idx) => {
+        this.props.operations.move(row_idx, col_idx);
     }
 
     makeTable(FigureMat) {
@@ -15,7 +15,7 @@ export default class Board extends React.Component {
                     <tr key={row_idx}>
                         { row.map((cell, col_idx) => (
                             <td className="cell" key={(row_idx,col_idx)}
-                                onClick={(e) => this.onClickCell(cell, row_idx, col_idx)}
+                                onClick={(e) => this.onClickCell(row_idx, col_idx)}
                             >
                                 <Figure data={cell} pos={{row_idx,col_idx}}
                                     operations={this.props.operations}

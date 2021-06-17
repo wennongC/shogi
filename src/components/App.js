@@ -28,21 +28,21 @@ export default class App extends React.Component {
         }
     }
 
-    move = (selected, dest_row, dest_col) => {
+    move = (dest_row, dest_col) => {
         let boardData = this.state.boardData;
 
-        if (selected) {
+        if (this.state.selected) {
             if (boardData[dest_row][dest_col] != null && 
                 boardData[dest_row][dest_col].player_side == this.state.selected.player_side)
                 return;
 
-            boardData[dest_row][dest_col] = selected;
+            boardData[dest_row][dest_col] = this.state.selected;
 
             if (this.state.selected_pos) {
                 const {row_idx, col_idx} = this.state.selected_pos;
                 boardData[row_idx][col_idx] = null;
             }
-            selected.unselect();
+            this.state.selected.unselect();
             this.setState({
                 boardData: boardData,
                 selected: null,
@@ -52,7 +52,7 @@ export default class App extends React.Component {
     }
 
     render() {
-        operations = {
+        const operations = {
             setSelected: this.setSelected,
             getSelected: this.getSelected,
             move: this.move
@@ -60,9 +60,9 @@ export default class App extends React.Component {
 
         return (
             <>
-            <CaptureSection operations />
-            <Board data={this.state.boardData} operations />
-            <CaptureSection operations />
+                <CaptureSection operations />
+                <Board data={this.state.boardData} operations={operations} />
+                <CaptureSection operations={operations} />
             </>
         );
     }
