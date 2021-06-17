@@ -4,9 +4,9 @@ import Figure from './Figure';
 class Board extends React.Component {
 
     makeTable(FigureMat) {
-        console.log(FigureMat);
         return (
             <table>
+                <tbody>
                 { FigureMat.map(row => (
                     <tr>
                         { row.map(cell => (
@@ -16,6 +16,7 @@ class Board extends React.Component {
                         )) }
                     </tr>
                 )) }
+                </tbody>
             </table>
         );
     }
