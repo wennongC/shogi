@@ -1,15 +1,19 @@
 import React from 'react'
 
-class Figure extends React.Component {
+export default class Figure extends React.Component {
 
     handleClick(e, figure) {
         if (e.type == "click") {
-            
+            this.props.operations.setSelected(figure, this.props.pos);
         } else if (e.type === 'contextmenu') {
             e.preventDefault();
             figure.flip();
-            this.forceUpdate();
         }
+        this.forceUpdate();
+    }
+
+    getDisplayColor(figure) {
+        return figure.selected ? "#81ecec" : figure.color;
     }
 
     render() {
@@ -20,7 +24,7 @@ class Figure extends React.Component {
             return (
                 <button 
                     className="figure" style={{
-                        backgroundColor: data.color,
+                        backgroundColor: this.getDisplayColor(data),
                         color: data.text_color
                     }}
                     onClick={(e) => this.handleClick(e, data)}
@@ -32,5 +36,3 @@ class Figure extends React.Component {
         }
     }
 }
-
-export default Figure;

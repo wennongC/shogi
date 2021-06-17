@@ -1,13 +1,14 @@
 export const PLAYER_1 = "1";
 export const PLAYER_2 = "2";
 
-export default class CellData {
+export default class FigureData {
     constructor(name, backside, player_side) {
         this.currentName = name;
         this.name = name;
         this.backside = backside;
         this.player_side = player_side;
         this.text_color = "black";
+        this.selected = false;
         
         if (player_side == PLAYER_1) {
             this.color = "#dfe6e9";
@@ -31,7 +32,10 @@ export default class CellData {
         }
     }
 
+    select() { this.selected = true; }
+    unselect() { this.selected = false; }
+
     makeCopy() {
-        return new CellData(this.name, this.backside, this.player_side);
+        return new FigureData(this.name, this.backside, this.player_side);
     }
 }
