@@ -1,18 +1,12 @@
 import React from 'react'
+import Figure from './Figure'
 
 export default class CaptureSection extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            figures: []
-        }
-    }
-
     render() {
         return (
             <div style={{height:55}}>
-            {this.state.figures.map(f => (
-                <Figure data={f} pos={null}
+            {this.props.figures.map((f, idx) => (
+                <Figure data={f} key={idx} idx={idx} pos={null}
                     operations={this.props.operations}
                 />
             ))}

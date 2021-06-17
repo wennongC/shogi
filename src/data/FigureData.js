@@ -10,13 +10,11 @@ export default class FigureData {
         this.text_color = "black";
         this.selected = false;
         
-        if (player_side == PLAYER_1) {
-            this.color = "#dfe6e9";
-        } else if (player_side == PLAYER_2) {
-            this.color = "#ffeaa7";
-        } else {
-            throw Error("Constructor Exception of CellData: player_side value is wrong");
-        }
+        this.updateColor();
+    }
+
+    updateColor() {
+        this.color = this.player_side == PLAYER_1 ? "#dfe6e9" : "#ffeaa7";
     }
 
     flip() {
@@ -34,6 +32,11 @@ export default class FigureData {
 
     select() { this.selected = true; }
     unselect() { this.selected = false; }
+
+    switchSide() {
+        this.player_side = this.player_side == PLAYER_1 ? PLAYER_2 : PLAYER_1;
+        this.updateColor();
+    }
 
     makeCopy() {
         return new FigureData(this.name, this.backside, this.player_side);

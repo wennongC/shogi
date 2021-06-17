@@ -4,7 +4,7 @@ export default class Figure extends React.Component {
 
     handleClick(e, figure) {
         if (e.type == "click") {
-            this.props.operations.setSelected(figure, this.props.pos);
+            this.props.operations.setSelected(figure, this.props.pos, this.props.idx);
         } else if (e.type === 'contextmenu') {
             e.preventDefault();
             figure.flip();

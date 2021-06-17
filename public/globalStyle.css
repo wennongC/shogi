@@ -4,12 +4,12 @@ table, th, td {
 
 .cell {
     width: 60px;
-    height: 60px;
+    height: 55px;
     align-items: center;
     text-align: center;
 }
 
 .figure {
     width: 30px;
-    height: 50px;
+    height: 45px;
 }
