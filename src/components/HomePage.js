@@ -18,7 +18,7 @@ export default class HomePage extends React.Component {
                 <p><strong>left click a figure</strong>: turn that figure into back side</p>
                 <hr />
                 <p>No programming rule to restrict how to move the figure</p>
-                <p>ルールとマナーを守って楽しくデュエルしよう！</p>
+                <p>「ルールとマナーを守って楽しくデュエルしよう！」</p>
             </div>
         );
     }
