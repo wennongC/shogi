@@ -13,10 +13,13 @@ export default class FigureData {
         this.updateColor();
     }
 
+    // Assign the figure color based on the player side.
     updateColor() {
         this.color = this.player_side == PLAYER_1 ? "#dfe6e9" : "#ffeaa7";
     }
 
+    // Change the display text/color of figure into back-side
+    // If toOrigin is set to true, the text will be changed to the origin text
     flip(toOrigin = false) {
         if (this.backside == null) return;
         else if (toOrigin) {
@@ -34,9 +37,11 @@ export default class FigureData {
         }
     }
 
+    // Set the selected status
     select() { this.selected = true; }
     unselect() { this.selected = false; }
 
+    // Change the owner of this figure
     switchSide() {
         this.player_side = this.player_side == PLAYER_1 ? PLAYER_2 : PLAYER_1;
         this.updateColor();

@@ -3,6 +3,8 @@ import React from 'react'
 export default class Figure extends React.Component {
 
     handleClick(e, figure) {
+        // The right click is for select/unselect,
+        // The left click is for flip the figure
         if (e.type == "click") {
             this.props.operations.setSelected(figure, this.props.pos, this.props.idx);
         } else if (e.type === 'contextmenu') {

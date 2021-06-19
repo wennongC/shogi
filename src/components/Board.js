@@ -3,10 +3,12 @@ import Figure from './Figure';
 
 export default class Board extends React.Component {
 
+    // Notify the Game.js to make a move
     onClickCell = (row_idx, col_idx) => {
         this.props.operations.move(row_idx, col_idx);
     }
 
+    // Generate the HTML table based on the board data provided by Game.js
     makeTable(FigureMat) {
         return (
             <table>
